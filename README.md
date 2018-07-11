@@ -1,4 +1,5 @@
 # NGS_HCV
+## WARNING: THIS REPOSITORY IS INCOMPLETE and it is being updated constantly
 Manual version 1.0  
 Sebastiano Montante - April 2018  
 ## Summary
