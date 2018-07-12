@@ -2,19 +2,19 @@
 
 Manual version 1.0  
 
-Sebastiano Montante - April 2018  
+*Sebastiano Montante - April 2018*
 
 
 # Summary
 
-- 1. Installation  
-- 2. Algorithm flow  
-- 3. Running instructions  
+1. Installation  
+2. Algorithm flow  
+3. Running instructions  
     3.1 Execution of the start script  
     3.2 mandatory arguments  
     3.3 Optional arguments  
     3.4 Examples of correct runs
-- 4. Output files
+4. Output files
 
 
 # 1. Installation
@@ -25,15 +25,15 @@ based systems.
 
 The following packages must be already installed in your system to execute the pipeline.
 
-- Python modules
-• Biopython (Bio package)
-• Numpy
-• Pandas
+**Python modules:**
+- Biopython (Bio package)
+- Numpy
+- Pandas
 
-- Bash packages
-• Bwa
-• Mothur
-• Ncbi-blast+
+**Bash packages:**
+- Bwa
+- Mothur
+- Ncbi-blast+
 
 The software checks automatically the presence of all the required packages in the system.
 The absence of a required package causes the interruption of the pipeline run. A warning message
@@ -48,11 +48,11 @@ files if compressed.
 During the second step, the reads to be processed are selected according to the indication of the
 user. At this point there is a bifurcation in the processing direction.
 
-1. If the genotypes is unknown a blast against a pool of filtered HCV sequences is performed
-to find the genotype of the input reads.
+**1. If the genotypes is unknown a blast against a pool of filtered HCV sequences is performed
+to find the genotype of the input reads.**
 
-2. if the genotype is known the blast is not executed. And the pipeline pass directly to the next
-step.
+**2. if the genotype is known the blast is not executed. And the pipeline pass directly to the next
+step.**
 
 The next step is the mapping phase. The input reads are mapped against a specific reference
 sequence,based on their gene and genotype, located in the reads folder. If the user provides a
@@ -95,7 +95,9 @@ arguments changes based on the type of input.
 The -R argument is mandatory regardless the type of input.
 Next to the - R argument the user must specify the correct directory where the file of the reads to be
 analyzed is located.
-- R directory_path_input_reads
+
+`- R directory_path_input_reads`
+
 The other mandatory arguments depend on the type of input to be analyzed:
 
 *1. first situation:*
@@ -106,7 +108,8 @@ The input is a single file of reads derived from pair end next generation sequen
 experiment where the forward and reverse reads sequences are in the same file.
 In this case, in addition to the -R argument, the user must specify only the -r argument
 indicating the name of the input reads file,located inside the reads_folder.
--r name_single_reads_file_to_be_processed
+
+`-r name_single_reads_file_to_be_processed`
 
 *2. Second situation:*
 
@@ -115,8 +118,10 @@ are processed
 in this case in addition to -R argument the user must specify the -rf and -rrv
 arguments,indicating respectively the name of file that contains the forward reads sequences
 and the name of the file that contains the reverse reads sequences.
--rf nome_file_reads_forward
--rrv nome_file_reads_reversed
+
+`-rf nome_file_reads_forward`
+
+`-rrv nome_file_reads_reversed`
 
 *3. Third situation:*
 
@@ -131,6 +136,7 @@ specify the -p argument to avoid the execution of the merging
 - `-rf name_file_reads_forward-rrv name_file_reads_reversed`
 
 - `-p`
+
 Note: the input reads files must be in .fastq format.
 The last mandatory argument is the -gn argument. Next to this argument the user must specify the
 gene of the amplicon.
