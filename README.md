@@ -49,22 +49,10 @@ to find the genotype of the input reads.**
 **2. If the genotype is known the blast is not executed and the pipeline goes directly to the next
 step.**
 
-The next step is the mapping phase. The input reads are mapped against a specific reference
-sequence,based on their gene and genotype, located in the reads folder. If the user provides a
-personal reference sequence,the mapping of the reads is performed against this user reference.
-The output of this step is a SAM file.
-The last step is the SAM processing,the most time-consuming phase of the pipeline.
-The SAM processing briefly consists in the extraction of the CIGAR information for each reads
-mapped correctly. Based on the CIGAR information, the pair-wise alignment between each read and
-the reference sequence is reconstructed, taking also in consideration the presence of insertions and
-deletions respect to the reference. Then each aligned pair is translated into their amino-acids
-sequence. The reads sequence is analyzed and compared to a rule set where are reported the
-resistance-associated mutations and their relevant positions.
-The prevalence of the amino-acids, including insertions and deletions, based on the reference
-position is reported in two tables. The prevalence is calculated on the total number of reads
-mapped.
-Finally, If a resistance-associated mutation reported in the rule is found in the reads analyzed,their
-prevalence, the drugs influenced by these mutations and other relevant informations,are reported in
+The next step is the mapping. Input reads are mapped against a specific reference sequence, based on their gene and genotype, located in the reads folder. If the user provides a specific reference sequence, the mapping is performed against that sequence. The output of this step is a SAM file.
+
+The last step is the SAM processing, the most time-consuming stage of the pipeline. SAM processing briefly consists in the extraction of the CIGAR information for each reads mapped correctly. Based on the CIGAR information, pair-wise alignment between each read and the reference sequence is reconstructed, also taking in consideration the presence of insertions and
+deletions. Then each aligned pair is translated into amino-acids sequence. Reads sequence is analyzed and compared to a rule set where are reported the resistance-associated mutations and their relevant positions. The prevalence of the amino-acids, including insertions and deletions, based on the reference position is reported on two tables. The prevalence is calculated upon the total number of reads mapped. Finally, if a resistance-associated mutation reported in the rule is found whithin reads analyzed, their prevalence, drugs influenced by these mutations and other relevant informations are reported on
 another table.
 
 
