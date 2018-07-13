@@ -49,7 +49,7 @@ to find the genotype of the input reads.**
 **2. If the genotype is known the blast is not executed and the pipeline goes directly to the next
 step.**
 
-The next step is the mapping. Input reads are mapped against a specific reference sequence, based on their gene and genotype, located in the reads folder. If the user provides a specific reference sequence, the mapping is performed against that sequence. The output of this step is a SAM file.
+The next step is mapping. Input reads are mapped against a specific reference sequence, based on their gene and genotype, located in the reads folder. If the user provides a specific reference sequence, the mapping is performed against that sequence. The output of this step is a SAM file.
 
 The last step is the SAM processing, the most time-consuming stage of the pipeline. SAM processing briefly consists in the extraction of the CIGAR information for each reads mapped correctly. Based on the CIGAR information, pair-wise alignment between each read and the reference sequence is reconstructed, also taking in consideration the presence of insertions and
 deletions. Then each aligned pair is translated into amino-acids sequence. Reads sequence is analyzed and compared to a rule set where are reported the resistance-associated mutations and their relevant positions. The prevalence of the amino-acids, including insertions and deletions, based on the reference position is reported on two tables. The prevalence is calculated upon the total number of reads mapped. Finally, if a resistance-associated mutation reported in the rule is found whithin reads analyzed, their prevalence, drugs influenced by these mutations and other relevant informations are reported on
@@ -82,7 +82,7 @@ The input is a single file of reads derived from single-end NGS or from pair-end
 
 *2. Second case:*
 
-The input consists of two reads that must be merged. The resulting merged reads are processed: in this case, in addition to -R argument, user must specify -rf and -rrv arguments, indicating respectively the name of the file containing forward and reverse reads sequences.
+The input consists of two reads that must be merged. The resulting merged reads are processed. In this case, in addition to -R argument, user must specify -rf and -rrv arguments, indicating respectively the name of the file containing forward and reverse reads sequences.
 
 `-rf name_file_reads_forward`
 
@@ -90,38 +90,39 @@ The input consists of two reads that must be merged. The resulting merged reads 
 
 *3. Third situation:*
 
-The input consists of two reads files derived from a pair end next generation sequencing experiment in which both the forward and reverse reads must be processed, without merging In this case in additon to the -R argument the user must specify the -rf and -rrv arguments,indicating respectively the name of file that contains the forward reads sequences
-and the name of the file that contains the reverse reads sequences. In addition the user must specify the -p argument to avoid the execution of the merging.
+The input consists of two reads derived from a paired-end NGS in which both forward and reverse reads must be processed, without merging. In this case, in addition to the -R argument user must specify -rf and -rrv arguments, indicating respectively the name of the file containing forward and reverse reads sequences. Also, user must specify the -p argument to avoid merging.
 
 - `-rf name_file_reads_forward-rrv name_file_reads_reversed`
 
 - `-p`
 
-Note: the input reads files must be in .fastq format. The last mandatory argument is the -gn argument. Next to this argument the user must specify the gene of the amplicon.
+Note: input files must be in .fastq format. The last mandatory argument is -gn. Next to this argument user must specify the gene of the amplicon.
 
 - `gn {NS3,NS5B,NS5A}`
 
-The valid input genes are indicated within the braces.3.3 Optional arguments These arguments are not necessary to the correct running of the pipeline, but they can be useful.
+Valid input genes are indicated within the braces.
+
+**3.3. Optional arguments**
 
 - `wd new_working_directory`
 
-With this argument the user can change the working directory in which the software processes the temporary files and where output files are reported. The default working directory is the folder where the terminal has been opened (the user must remember that the relative reads folder path changes once the working directory changes)
+With this argument user can change working directory in which the software processes temporary files and where output files are reported. Default working directory is the folder where the terminal has been opened (user has to remember that relative reads' folder path changes once the working directory changes)
 
-- `btch n`
+- `btch n` 
 
-The user can choose to analyze a batch of “n” reads casually extracted by the input files. Useful to perform rapid testing runs.
+User can analyze a batch of “n” reads casually extracted from the input files. Useful to perform fast testing runs.
 
 - `tv n`
 
-The user can specify a threshold_value. The user can consider only relevant mutations with a prevalence above “n”.
+User can specify a threshold_value and can consider only relevant mutations with a prevalence above “n”.
 
 - `prc n`
 
-The user can select the number of processors. This argument controls the number of processors to execute the blast, the bwa mapping, and the mothur merging.
+This argument manages number of threads to execute BLAST, BWA mapping and mothur merging.
 
 - `gt {"1a","1b","2","3","4","unknown"}`
 
-The user can indicate the genotype of the reads to be analyed if known. The default is unknown. If unknown , a blast is performed. The blast align all the reads against a pool of thousands HCV sequences. This pool covers the main HCV genotypes. The software considers the genotype with the highest prevalence as the genotype of the reads. The mapping of the reads will be always executed against a specific reference based on the gene and genotype of the reads. The gene and genotype informations are also used during the rule set comparison phase. Because each relevant resistance mutation and associated drug changes based on gene and genotype. 
+User can indicate the genotype of the reads to be analyed if known. The default is unknown. If unknown , a blast is performed. The blast align all the reads against a pool of thousands HCV sequences. This pool covers the main HCV genotypes. The software considers the genotype with the highest prevalence as the genotype of the reads. The mapping of the reads will be always executed against a specific reference based on the gene and genotype of the reads. The gene and genotype informations are also used during the rule set comparison phase. Because each relevant resistance mutation and associated drug changes based on gene and genotype. 
 
 - `usrf path_user_ref_folder/user_ref.fasta`
 
