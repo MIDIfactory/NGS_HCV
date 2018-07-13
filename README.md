@@ -9,21 +9,19 @@ Manual version 1.0
 
 1. Installation  
 2. Algorithm flow  
-3. Running instructions  
-    3.1 Execution of the start script  
-    3.2 mandatory arguments  
+3. Instructions  
+    3.1 Running first script  
+    3.2 Mandatory arguments  
     3.3 Optional arguments  
-    3.4 Examples of correct runs
+    3.4 Examples
 4. Output files
 
 
 # 1. Installation
 
-The software has been developed for 64bit Linux system using Python programming language.
-In particular it was tested with Ubuntu systems,but it should be function also with other Linux
-based systems.
+This software is developed for 64bit Linux system and was tested on Ubuntu.
 
-The following packages must be already installed in your system to execute the pipeline.
+The following packages must be installed on your system to execute the pipeline.
 
 **Python modules:**
 - Biopython (Bio package)
@@ -35,23 +33,20 @@ The following packages must be already installed in your system to execute the p
 - Mothur
 - Ncbi-blast+
 
-The software checks automatically the presence of all the required packages in the system.
-The absence of a required package causes the interruption of the pipeline run. A warning message
-is displayed on the terminal, indicating the missing package.
+The software automatically checks the presence of all required packages. A warning message is shown on the terminal indicating the missing package.
 
 
 # 2. Algorithm flow
 
-Below there is a briefly description of the flow followed by the pipeline.
-The first step of the pipeline includes the checking of the reads folder and the extraction of the input
+Here is a briefly description of the flow, along with the pipeline.
+The first step of the pipeline includes the check of the reads folder and the extraction of input
 files if compressed.
-During the second step, the reads to be processed are selected according to the indication of the
-user. At this point there is a bifurcation in the processing direction.
+During the second step, the reads that will be processed are selected according to user's indications. At this point there are two alternatives:
 
-**1. If the genotypes is unknown a blast against a pool of filtered HCV sequences is performed
+**1. If the genotype is unknown, a blast against a pool of filtered HCV sequences is performed
 to find the genotype of the input reads.**
 
-**2. if the genotype is known the blast is not executed. And the pipeline pass directly to the next
+**2. If the genotype is known the blast is not executed and the pipeline goes directly to the next
 step.**
 
 The next step is the mapping phase. The input reads are mapped against a specific reference
