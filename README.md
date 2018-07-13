@@ -82,16 +82,16 @@ The input is a single file of reads derived from single-end NGS or from pair-end
 
 *2. Second case:*
 
-The input consists of two reads files that must be merged and the resulting merged reads are processed in this case in addition to -R argument the user must specify the -rf and -rrv arguments,indicating respectively the name of file that contains the forward reads sequences and the name of the file that contains the reverse reads sequences.
+The input consists of two reads that must be merged. The resulting merged reads are processed: in this case, in addition to -R argument, user must specify -rf and -rrv arguments, indicating respectively the name of the file containing forward and reverse reads sequences.
 
-`-rf nome_file_reads_forward`
+`-rf name_file_reads_forward`
 
-`-rrv nome_file_reads_reversed`
+`-rrv name_file_reads_reversed`
 
 *3. Third situation:*
 
 The input consists of two reads files derived from a pair end next generation sequencing experiment in which both the forward and reverse reads must be processed, without merging In this case in additon to the -R argument the user must specify the -rf and -rrv arguments,indicating respectively the name of file that contains the forward reads sequences
-and the name of the file that contains the reverse reads sequences. In addition the user must specify the -p argument to avoid the execution of the merging
+and the name of the file that contains the reverse reads sequences. In addition the user must specify the -p argument to avoid the execution of the merging.
 
 - `-rf name_file_reads_forward-rrv name_file_reads_reversed`
 
