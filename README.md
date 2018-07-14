@@ -122,45 +122,45 @@ This argument manages number of threads to execute BLAST, BWA mapping and mothur
 
 - `gt {"1a","1b","2","3","4","unknown"}`
 
-User can indicate the genotype of the reads to be analyed if known. The default is unknown. If unknown , a blast is performed. The blast align all the reads against a pool of thousands HCV sequences. This pool covers the main HCV genotypes. The software considers the genotype with the highest prevalence as the genotype of the reads. The mapping of the reads will be always executed against a specific reference based on the gene and genotype of the reads. The gene and genotype informations are also used during the rule set comparison phase. Because each relevant resistance mutation and associated drug changes based on gene and genotype. 
+If known, user can indicate reads' genotype. Default is unknown. If unknown, a blast is performed. BLAST aligns all the reads against a pool of thousands HCV sequences. This pool covers main HCV genotypes. The software considers genotype with the highest prevalence as the genotype of the reads. Mapping of the reads will always be executed against a specific reference based on the gene and the genotype of the reads. Gene's and genotype's informations are also used during the rule set comparison, because each relevant resistance mutation and associated drug changes based on gene and genotype. 
 
 - `usrf path_user_ref_folder/user_ref.fasta`
 
-The user can also provide a personal reference, specifing the correct path of the reference file next to the -usrf argument.The arguments (both optional and mandatory ) can be inserted in any order.
+User can also provides a personal reference, specifing the correct path of the reference file next to -usrf argument. Arguments (both optional and mandatory) can be inserted in any order.
 
-**3.4 Examples of correct runs**
+**3.4 Examples**
 
-*1) Processing of the SAM file derived by a single end mapping. No genotype specified.*
+*1) Processing a SAM file derived by a single-end mapping. No genotype specified.*
 
-In this case a blast is executed to find the genotype of the input reads.
+In this case a blast is executed to find genotype of the input reads.
 
 `python path/software_folder/NGS_HCV_analysis.py -R path/reads_folder -r reads_1.fastq -gn
 NS5A`
 
-*2) Processing of the SAM file derived by a single end mapping* 
+*2) Processing a SAM file derived by a single-end mapping* 
 
-In this case the user already knows the reads genotype so the blast is not executed Only 100 reads will be analyzed.
+In this case user already knows the reads' genotype, so blast is not executed. Only 100 reads will be analyzed.
 
 `python path/software_folder/NGS_HCV_analysis.py -R path/reads_folder -r reads_1.fastq -gn
 NS5A -gt 1a -btch 100`
 
-*3) Processingt of the SAM file derived by a pair end mapping.*
+*3) Processing a SAM file derived by a paired-end mapping.*
 
-The user has indicated the name of the reads forward and reversed and the -p argument.
+User has indicated the name of forward and reversed reads and -p argument.
 
 `python path/software_folder/NGS_HCV_analysis.py -R path/reads_folder -p -rf reads_1.fastq -rrv
 reads_2.fastq -gn NS5A`
 
-*4) Processing of the SAM file derived by a single end mapping.*
+*4) Processing a SAM file derived by a single-end mapping.*
 
 The user has indicated a personal reference. In this case the reads will be mapped against this reference. Ony 100 reads will be analyzed. No blast executed because the genotype has been indicated.
 
 `python path/software_folder/NGS_HCV_analysis.py -R path/reads_folder -r reads_1.fastq -gn
 NS5A -gt 1a -btch 100 -usrf user_ref_path/user_ref.fasta`
 
-*5) Processing of the SAM file derived by a single end mapping.*
+*5) Processing a SAM file derived by a single-end mapping.*
 
-The input are two reads files that are merged into a single merged reads file because the -p argument has not been specified. Blast is executed.
+Input consists of two reads that are merged into a single file because the -p argument has not been specified. Blast is executed.
 
 `python path/software_folder/NGS_HCV_analysis.py -R ./reads_folder -rf reads_1.fastq -rrv
 reads_2.fastq -gn NS5A4`
@@ -168,31 +168,30 @@ reads_2.fastq -gn NS5A4`
 
 # 4. Output files
 
-There is 7 output files:
+There are 7 output files:
 
-- **df_all_ref_pos_all_aa_prevalence.csv:**
+- **1) df_all_ref_pos_all_aa_prevalence.csv:**
 
-An excel file that reports the amino-acids prevalences respect to the total number of reads mapped based on reference position. The table reports also the coverage of each position and the prevalence of deletions.
+An excel file reporting the amino-acids prevalences compared to the total number of mapped reads based on the reference positions. Table also reports coverage of each position and the prevalence of deletions.
 
-- **df_all_ref_pos_aa_ins_prevalence.csv**
+- **2) df_all_ref_pos_aa_ins_prevalence.csv**
 
-an excel file that reports only the prevalence of insertions based on reference positions. The table reports also the the total percentage of reads that have insertions in a position respect to the total number of reads mapped and their absolute frequency.
+An excel file reporting only the prevalence of insertions based on reference positions. Table also reports percentage of reads that have insertions in a position compared to the total number of mapped reads and their absolute frequency.
 
-- **df_rule_set**
+- **3) df_rule_set**
 
-portion of the rule set that reports all the relevant resistance-associated mutations founded in the reads (based on gene and genotype), the related drugs, the effect (possible resistant or resistant) and the reference from scientific literature.
+Portion of the rule set reporting the relevant resistance-associated mutations founded among the reads (based on gene and genotype), related drugs, effect (possible resistant or resistant) and the reference from scientific literature.
 
-- **df_rules_found_vs_prevalences**
+- **4) df_rules_found_vs_prevalences**
 
-This file is a table that reports the relevant mutations founded with their associated prevalences. If -tv argument has been specified, the mutation under the chosen threshold are not considered.
+This file is a table reporting relevant mutations founded among their associated prevalences. If -tv argument was specified, mutations whithin the chosen threshold are not considered.
 
-- **drugs_resistant_and_susceptible**
+- **5) drugs_resistant_and_susceptible**
 
-a text file that reports the list of drugs for which the virus can be resistant or susceptible.
+A text file reporting list of drugs that virus can be resistant or susceptible to.
 
-- **The raw SAM file before processing.**
+- **6) The raw SAM file before processing.**
 
-- **log_file:**
+- **7) log_file:**
 
-a text file that reports details about the operations performed by the pipeline. It reports the total number of reads in the SAM file, the number of reads correctly mapped and analyzed. It reports all the possible errors that can occur during the running of the pipeline. It reports also the different warnings that can inform the user about biological aspects emerged during the processing. For example it informs the user about a low mapping percentage , when the number of reads mapped is below the 50%. If no relevant mutations is founded, the output includes only a warning message that advises the
-user and the output files 1,2,6,7. The other files remains empty.
+A text file reporting details about operations performed by the pipeline. It reports total number of reads in the SAM file, number of reads correctly mapped and analyzed. It reports all the possible errors that can occur while running the pipeline. It also reports various warnings that can informs user about biological aspects emerged during the processing. For example, it informs user about a low mapping percentage when the number of mapped reads is below 50%. If no relevant mutations are founded, output only includes a warning message advising the user and output files are 1,2,6,7. The other files remain empty.
