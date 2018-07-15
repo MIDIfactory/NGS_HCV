@@ -49,7 +49,7 @@ to find the genotype of the input reads.**
 **2. If the genotype is known the blast is not executed and the pipeline goes directly to the next
 step.**
 
-The next step is mapping. Input reads are mapped against a specific reference sequence, based on their gene and genotype, located in the reads folder. If the user provides a specific reference sequence, the mapping is performed against that sequence. The output of this step is a SAM file.
+The next step is mapping. Input reads are mapped against a specific reference sequence, related to their gene and genotype, located in the reads folder. If the user provides a personal reference sequence, the mapping is performed against that sequence. The output of this step is a SAM file.
 
 The last step is the SAM processing, the most time-consuming stage of the pipeline. SAM processing briefly consists in the extraction of the CIGAR information for each reads mapped correctly. Based on the CIGAR information, pair-wise alignment between each read and the reference sequence is reconstructed, also taking in consideration the presence of insertions and
 deletions. Then each aligned pair is translated into amino-acids sequence. Reads sequence is analyzed and compared to a rule set where are reported the resistance-associated mutations and their relevant positions. The prevalence of the amino-acids, including insertions and deletions, based on the reference position is reported on two tables. The prevalence is calculated upon the total number of reads mapped. Finally, if a resistance-associated mutation reported in the rule is found whithin reads analyzed, their prevalence, drugs influenced by these mutations and other relevant informations are reported on
@@ -82,7 +82,7 @@ The input is a single file of reads derived from single-end NGS or from pair-end
 
 *2. Second case:*
 
-The input consists of two reads that must be merged. The resulting merged reads are processed. In this case, in addition to -R argument, user must specify -rf and -rrv arguments, indicating respectively the name of the file containing forward and reverse reads sequences.
+The input consists of two reads that have to be merged. The resulting merged reads are processed. In this case, in addition to -R argument, user must specify -rf and -rrv arguments, indicating respectively the name of the file containing forward and reverse reads sequences.
 
 `-rf name_file_reads_forward`
 
@@ -90,7 +90,7 @@ The input consists of two reads that must be merged. The resulting merged reads 
 
 *3. Third situation:*
 
-The input consists of two reads derived from a paired-end NGS in which both forward and reverse reads must be processed, without merging. In this case, in addition to the -R argument user must specify -rf and -rrv arguments, indicating respectively the name of the file containing forward and reverse reads sequences. Also, user must specify the -p argument to avoid merging.
+The input consists of two reads derived from a paired-end NGS in which both forward and reverse reads have to be processed, without merging. In this case, in addition to the -R argument user must specifiy -rf and -rrv arguments, indicating respectively the name of the file containing forward and reverse reads sequences. Also, user must specify the -p argument to avoid merging.
 
 - `-rf name_file_reads_forward-rrv name_file_reads_reversed`
 
