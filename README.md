@@ -190,8 +190,8 @@ This file is a table reporting relevant mutations founded among their associated
 
 A text file reporting list of drugs that virus can be resistant or susceptible to.
 
-- **6) The raw SAM file before processing.**
+- **6) The raw SAM file before processing**
 
-- **7) log_file:**
+- **7) log_file**
 
 A text file reporting details about operations performed by the pipeline. It reports total number of reads in the SAM file, number of reads correctly mapped and analyzed. It reports all the possible errors that can occur while running the pipeline. It also reports various warnings that can informs user about biological aspects emerged during the processing. For example, it informs user about a low mapping percentage when the number of mapped reads is below 50%. If no relevant mutations are founded, output only includes a warning message advising the user and output files are 1,2,6,7. The other files remain empty.
