@@ -88,7 +88,7 @@ The input consists of two reads that have to be merged. The resulting merged rea
 
 `-rrv name_file_reads_reversed`
 
-*3. Third situation:*
+*3. Third case:*
 
 The input consists of two reads derived from a paired-end NGS in which both forward and reverse reads have to be processed, without merging. In this case, in addition to the -R argument user must specifiy -rf and -rrv arguments, indicating respectively the name of the file containing forward and reverse reads sequences. Also, user must specify the -p argument to avoid merging.
 
@@ -126,7 +126,7 @@ If known, user can indicate reads' genotype. Default is unknown. If unknown, a b
 
 - `usrf path_user_ref_folder/user_ref.fasta`
 
-User can also provides a personal reference, specifing the correct path of the reference file next to -usrf argument. Arguments (both optional and mandatory) can be inserted in any order.
+User can also provide a personal reference, specifing the correct path of the reference file next to -usrf argument. Arguments (both optional and mandatory) can be inserted in any order.
 
 **3.4 Examples**
 
@@ -137,7 +137,7 @@ In this case a blast is executed to find genotype of the input reads.
 `python path/software_folder/NGS_HCV_analysis.py -R path/reads_folder -r reads_1.fastq -gn
 NS5A`
 
-*2) Processing a SAM file derived by a single-end mapping* 
+*2) Processing a SAM file derived by a single-end mapping.* 
 
 In this case user already knows the reads' genotype, so blast is not executed. Only 100 reads will be analyzed.
 
@@ -170,7 +170,7 @@ reads_2.fastq -gn NS5A4`
 
 There are 7 output files:
 
-- **1) df_all_ref_pos_all_aa_prevalence.csv:**
+- **1) df_all_ref_pos_all_aa_prevalence.csv**
 
 An excel file reporting the amino-acids prevalences compared to the total number of mapped reads based on the reference positions. Table also reports coverage of each position and the prevalence of deletions.
 
@@ -194,4 +194,4 @@ A text file reporting list of drugs that virus can be resistant or susceptible t
 
 - **7) log_file**
 
-A text file reporting details about operations performed by the pipeline. It reports total number of reads in the SAM file, number of reads correctly mapped and analyzed. It reports all the possible errors that can occur while running the pipeline. It also reports various warnings that can informs user about biological aspects emerged during the processing. For example, it informs user about a low mapping percentage when the number of mapped reads is below 50%. If no relevant mutations are founded, output only includes a warning message advising the user and output files are 1,2,6,7. The other files remain empty.
+A text file reporting details about operations performed by the pipeline. It reports total number of reads in the SAM file, number of reads correctly mapped and analyzed. It reports all the possible errors that can occur while running the pipeline. It also reports various warnings that can inform user about biological aspects emerged during the processing. For example, it informs user about a low mapping percentage when the number of mapped reads is below 50%. If no relevant mutations are founded, output only includes a warning message advising the user and output files are 1,2,6,7. The other files remain empty.
